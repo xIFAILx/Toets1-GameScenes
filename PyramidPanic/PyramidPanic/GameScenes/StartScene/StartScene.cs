@@ -21,6 +21,7 @@ namespace PyramidPanic
         private Image background;
         private Image title;
 
+
         // Constructor van de StartScene-class krijgt een object game mee van het type PyramidPanic
         public StartScene(PyramidPanic game)
         {
@@ -41,6 +42,7 @@ namespace PyramidPanic
         {   // Nu maken we een object (instantie) van de class Image
             this.background = new Image(this.game, @"StartScene/Background",Vector2.Zero);
             this.title = new Image(this.game, @"StartScene/Title", new Vector2(100f, 30f));
+
         }
 
         // Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
@@ -64,6 +66,7 @@ namespace PyramidPanic
             this.game.GraphicsDevice.Clear(Color.Purple);
             this.background.Draw(gameTime);
             this.title.Draw(gameTime);
+            //this.start.Draw(gameTime);
         }
     }
 }

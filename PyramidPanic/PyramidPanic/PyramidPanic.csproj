@@ -115,6 +115,7 @@
     <Compile Include="Game\IState.cs" />
     <Compile Include="HelperClass\Image.cs" />
     <Compile Include="Input\Input.cs" />
+    <Compile Include="Game\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Game\Program.cs" />
     <Compile Include="Game\PyramidPanic.cs" />
