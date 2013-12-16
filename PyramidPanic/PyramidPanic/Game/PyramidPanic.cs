@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using PyramidPanic.GameScenes.LoadScene;
 
 namespace PyramidPanic
 {
@@ -30,13 +31,13 @@ namespace PyramidPanic
 
         // Maak een variabele aan van het type GameOverScene
         private GameOverScene gameOverScene;
+        // Maak een variabele aan van het type LoadScene
+        private LoadScene loadScene;
 
         // Maak een variabele iState aan van het type interface IState
         private IState iState;
                 
-        #region Properties
-        // Properties
-        
+        #region Properties        
         // Maak de interface variabele iState beschikbaar buiten de class d.m.v
         // een property IState
         public IState IState
@@ -50,6 +51,12 @@ namespace PyramidPanic
         public StartScene StartScene
         {
             get { return this.startScene; }
+        }
+        // Maak het field this.startScene beschikbaar buiten de class d.m.v een
+        // property StartScene
+        public LoadScene LoadScene
+        {
+            get { return this.loadScene; }
         }
 
         // Maak het field this.playScene beschikbaar buiten de class d.m.v een
@@ -72,7 +79,9 @@ namespace PyramidPanic
         {
             get { return this.gameOverScene; }
         }
-        // Maak het field this.Spritebatch beschikbaar buiten de class d.m.v een property spritebatch
+
+        // Maak het field this.spriteBatch beschikbaar buiten de class d.m.v een
+        // property SpriteBatch
         public SpriteBatch SpriteBatch
         {
             get { return this.spriteBatch; }
@@ -124,6 +133,9 @@ namespace PyramidPanic
             // Nieuwe instantie van de GameOverScene
             this.gameOverScene = new GameOverScene(this);
 
+            // Nieuwe instantie van de GameOverScene
+            this.loadScene = new LoadScene(this);
+
             
             this.iState = this.startScene;
         }
@@ -140,8 +152,10 @@ namespace PyramidPanic
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 this.Exit();
+
             // De Update method van de static Input class wordt aangeroepen
             Input.Update();
+
             // De Update methode van het object dat toegewezen is aan het interface-object
             // this.iState wordt aangeroepen.
             this.iState.Update(gameTime);
