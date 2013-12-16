@@ -99,10 +99,8 @@ namespace PyramidPanic
                     this.start.Color = this.activeColor;
                     break;
                 case Buttons.Load:
-                    if (Input.EdgeDetectKeyDown(Keys.Enter))
-                    {
-                        this.game.IState = this.game.LoadScene;
-                    }
+                    this.game.IState = (Input.EdgeDetectKeyDown(Keys.Enter))
+                            ? (IState)this.game.PlayScene : this.game.LoadScene;
                     this.load.Color = this.activeColor;
                     break;
                 case Buttons.Scores:
@@ -112,6 +110,8 @@ namespace PyramidPanic
                     this.help.Color = this.activeColor;
                     break;
                 case Buttons.Quit:
+                    this.game.IState = (Input.EdgeDetectKeyDown(Keys.Enter))
+                            ? (IState)this.game.QuitScene : this.game.QuitScene;
                     this.quit.Color = this.activeColor;
                     break;
             }
@@ -151,6 +151,10 @@ namespace PyramidPanic
             }
             else if (this.quit.Rectangle.Intersects(Input.MouseRect()))
             {
+                if (Input.EdgeDetectMousePressLeft())
+                {
+                    this.game.IState = this.game.QuitScene;
+                }
                 this.ChangeButtonColorToNormal();
                 this.quit.Color = this.activeColor;
             }

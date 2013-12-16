@@ -33,6 +33,8 @@ namespace PyramidPanic
         private GameOverScene gameOverScene;
         // Maak een variabele aan van het type LoadScene
         private LoadScene loadScene;
+        // Maaak een variabele aan van het type QuitScene
+        private QuitScene quitScene;
 
         // Maak een variabele iState aan van het type interface IState
         private IState iState;
@@ -86,6 +88,12 @@ namespace PyramidPanic
         {
             get { return this.spriteBatch; }
         }
+
+        //Maak het field this.QuitScene beschikbaar buiten de class d.m.v een property QuitScene
+        public QuitScene QuitScene
+        {
+            get { return this.quitScene; }
+        }
         #endregion
 
         //Dit is de constructor. Heeft altijd dezelfde naam als de class.
@@ -135,6 +143,9 @@ namespace PyramidPanic
 
             // Nieuwe instantie van de GameOverScene
             this.loadScene = new LoadScene(this);
+
+            // Nieuwe instantie van de QuitScene
+            this.quitScene = new QuitScene(this);
 
             
             this.iState = this.startScene;
